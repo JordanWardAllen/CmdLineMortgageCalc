@@ -7,22 +7,26 @@ public class Main {
 
 
     public static void main(String[] args) {
+        final byte numberOfMonths = 12;
+        final byte percent = 100;
+
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Enter Principal: ");
-        float principal =  Float.parseFloat(scanner.nextLine().trim());
+        float principal =  scanner.nextFloat();
 
 
         System.out.print("Enter Annual Interest rate: ");
-        float interestRate = Float.parseFloat(scanner.nextLine().trim()) / 100 / 12;
+        float interestRate = scanner.nextFloat() / percent / numberOfMonths;
 
         System.out.print("Enter period: ");
-        int period = Integer.parseInt(scanner.nextLine().trim()) * 12;
-
+        int period = scanner.nextInt() * 12;
 
         double result = principal * (interestRate * (Math.pow((1 + interestRate), period)))/(Math.pow(1 + interestRate, period) - 1);
-        NumberFormat resultFormatted =  NumberFormat.getCurrencyInstance();
 
-        System.out.println(resultFormatted.format(result));
+        String resultFormatted =  NumberFormat.getCurrencyInstance().format(result);
+
+        System.out.println(resultFormatted);
 
     }
 }
